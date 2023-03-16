@@ -12,20 +12,76 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   email String @unique
   hashedPassword String
   nickName String?
   tasks Task[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Task {
   id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   title String
   description String?
   userId Int
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pokemon {
+  id Int @id @default(autoincrement())
+  cardRushId Int
+  name String
+  price Int
+  category ProductCategory
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Correction {
+  id Int @id @default(autoincrement())
+  userId Int
+  price Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rarely {
+  id Int @id @default(autoincrement())
+  kind RarelyKind
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+enum ProductCategory {
+  BOX
+  CARD
+  OTHER
+}
+
+enum RarelyKind {
+  SR
+  SAR
+  UR
+  AR
+  RRR
+  RR
+  R
+  U
+  C
+  HR
+  CHR
+  CSR
+  SSR
+  S
+  A
+  K
+  TR
+  PR
+  H
+  Mirror
+  P
 }
