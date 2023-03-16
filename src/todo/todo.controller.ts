@@ -19,7 +19,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from '@prisma/client';
 
-@UseGuards(AuthGuard('jwt'))
+// @UseGuards(AuthGuard('jwt'))
 @Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
